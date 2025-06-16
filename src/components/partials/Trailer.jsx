@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import ReactPlayer from "react-player";
-import Notfound from "../notfound";
+import Notfound from "../NotFound";
 function Trailer() {
   const navigate = useNavigate();
   const { pathname } = useLocation();

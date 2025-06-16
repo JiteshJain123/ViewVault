@@ -11,7 +11,6 @@ function Moviedetails() {
   const { id } = useParams();
   const { info } = useSelector((state) => state.movie);
   const dispatch = useDispatch();
-  console.log(info);
 
   useEffect(() => {
     dispatch(asyncloadmovie(id));

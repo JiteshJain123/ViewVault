@@ -79,7 +79,7 @@ function PersonDetails() {
           <h1 className="text-2xl text-zinc-400 font-semibold my-5">
             Personal Info
           </h1>
-          <h1 className="text-lg text-zinc-400 font-semibold">Known For</h1>
+          <h1 className="text-lg text-zinc-400 font-semibold">Popular For</h1>
           <h1 className=" text-zinc-400">{info.detail.known_for_department}</h1>
           <h1 className="text-lg text-zinc-400 font-semibold mt-3">Gender</h1>
           <h1 className=" text-zinc-400">

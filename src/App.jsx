@@ -10,7 +10,7 @@ import Moviedetails from "./components/Moviedetails";
 import TvDetails from "./components/TvDetails";
 import PersonDetails from "./components/PersonDetails";
 import Trailer from "./components/partials/Trailer";
-import Notfound from "./components/notfound";
+import NotFound from "./components/NotFound";
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
         </Route>
         <Route path="/person" element={<People />}/>
         <Route path="/person/details/:id" element={<PersonDetails />} />
-        <Route path="*" element={<Notfound />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );

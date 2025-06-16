@@ -17,7 +17,6 @@ function TvDetails() {
   const { id } = useParams();
   const { info } = useSelector((state) => state.tv);
   const dispatch = useDispatch();
-  console.log(info);
 
   useEffect(() => {
     dispatch(asyncloadtv(id));
