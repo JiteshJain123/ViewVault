@@ -13,6 +13,7 @@ function Home() {
   const [trending, settrending] = useState(null);
   const [category, setcategory] = useState("all");
 
+
   const GetHeaderWallpaper = async () => {
     try {
       const { data } = await axios.get(`/trending/all/day`);
@@ -37,6 +38,7 @@ function Home() {
     GetTrending();
     !wallpaper && GetHeaderWallpaper();
   }, [category]);
+
 
   return wallpaper && trending ? (
     <>
