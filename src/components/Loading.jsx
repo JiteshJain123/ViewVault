@@ -20,7 +20,7 @@ function Loading() {
     // Show VPN warning after 5 seconds
     const timer = setTimeout(() => {
       setShowWarning(true);
-    }, 5000);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, []);
