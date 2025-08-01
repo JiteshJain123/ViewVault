@@ -43,36 +43,42 @@ function Topnav() {
   return (
     <div
       ref={dropdownRef}
-      className="w-[80%] h-[10vh] relative flex mx-auto items-center"
+      className="w-full max-w-4xl px-4 py-3 flex items-center gap-3 mx-auto relative"
     >
-      <i className="text-zinc-400 text-2xl ri-search-line"></i>
+      {/* Search Icon */}
+      <i className="text-zinc-400 text-xl ri-search-line"></i>
+
+      {/* Search Input */}
       <input
         value={query}
         onChange={(e) => setquery(e.target.value)}
-        className="bg-transparent text-zinc-200 w-[50%] mx-10 p-3 text-xl outline-none border-none"
         type="text"
-        placeholder="Search anything"
+        placeholder="Search anything..."
+        className="flex-1 bg-transparent text-zinc-200 placeholder:text-zinc-400 text-base sm:text-lg px-2 py-2 outline-none border-none"
       />
+
+      {/* Clear Button */}
       {query.length > 0 && (
         <i
           onClick={() => {
             setquery("");
             setsearches([]);
           }}
-          className="text-zinc-400 text-2xl ri-close-fill right-0 cursor-pointer"
+          className="text-zinc-400 text-xl ri-close-fill cursor-pointer"
         ></i>
       )}
 
+      {/* Dropdown Results */}
       {query.length > 0 && searches.length > 0 && (
-        <div className="z-[100] w-[50%] max-h-[50vh] bg-zinc-200 absolute top-[100%] left-[5%] overflow-auto shadow-xl rounded">
+        <div className="z-[100] w-full max-w-4xl max-h-[50vh] bg-zinc-200 absolute top-full left-0 mt-2 overflow-auto shadow-xl rounded">
           {searches.map((s, i) => (
             <Link
               to={`/${s.media_type}/details/${s.id}`}
               key={i}
-              className="hover:text-black hover:bg-zinc-300 duration-200 font-semibold text-zinc-600 w-[100%] p-8 flex items-center justify-start border-b-2 border-zinc-100"
+              className="hover:text-black hover:bg-zinc-300 duration-200 font-semibold text-zinc-600 w-full p-4 sm:p-5 flex items-center justify-start border-b border-zinc-100"
             >
               <img
-                className="w-[10vh] h-[10vh] object-cover rounded mr-5 shadow-lg"
+                className="w-16 h-16 sm:w-[10vh] sm:h-[10vh] object-cover rounded mr-4 shadow-md"
                 src={
                   s.backdrop_path || s.profile_path
                     ? `https://image.tmdb.org/t/p/original/${
@@ -82,7 +88,7 @@ function Topnav() {
                 }
                 alt=""
               />
-              <span>
+              <span className="text-sm sm:text-base line-clamp-1">
                 {s.original_title || s.name || s.title || s.original_name}
               </span>
             </Link>

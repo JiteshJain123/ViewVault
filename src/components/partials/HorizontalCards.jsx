@@ -1,15 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import noimage from "/noimage.jpg";
+
 function HorizontalCards({ data }) {
   return (
-    <div className="w-[100%] flex overflow-y-hidden mb-5 p-5">
+    <div className="w-full overflow-x-auto whitespace-nowrap scroll-smooth mb-5 px-4 py-2">
       {data.length > 0 ? (
         data.map((d, i) => (
           <Link
             to={`/${d.media_type}/details/${d.id}`}
             key={i}
-            className="min-w-[15%] h-[36vh] bg-zinc-900 mr-5 mb-5"
+            className="inline-block w-[60vw] sm:w-[30vw] md:w-[15%] h-[36vh] bg-zinc-900 mr-3 rounded overflow-hidden"
           >
             <img
               className="w-full h-[55%] object-cover"
@@ -22,11 +23,11 @@ function HorizontalCards({ data }) {
               }
               alt=""
             />
-            <div className="text-white p-3 h-[45%] overflow-y-auto">
-              <h1 className="text-md font-semibold ">
+            <div className="text-white p-3 h-[45%] overflow-y-auto text-sm">
+              <h1 className="font-semibold">
                 {d.original_title || d.name || d.title || d.original_name}
               </h1>
-              <p className="">
+              <p>
                 {d.overview.slice(0, 50)}...
                 <span className="text-zinc-500">more</span>
               </p>

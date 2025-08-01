@@ -13,7 +13,7 @@ function People() {
   const [person, setperson] = useState([]);
   const [page, setpage] = useState(1);
   const [hasMore, sethasMore] = useState(true);
-  document.title = "People "
+  document.title = "People ";
 
   const GetPerson = async () => {
     try {
@@ -42,21 +42,34 @@ function People() {
   useEffect(() => {
     refreshHandler();
   }, [category]);
+
   return person.length > 0 ? (
-    <div className="w-screen h-screen ">
-      <div className="px-[5%] w-full flex items-center justify-between">
-        <h1 className="text-2xl font-semibold text-zinc-400">
+    <div className="w-screen h-screen mt-5">
+      {/* Header Section */}
+      <div className="px-[5%] w-full flex flex-col sm:flex-row sm:items-center sm:justify-between">
+        <h1 className="text-2xl font-semibold text-zinc-400 mb-4 sm:mb-0">
           <i
             onClick={() => navigate(-1)}
-            className="hover:text-[#6556CD] mr-10 ri-arrow-left-line"
+            className="hover:text-[#6556CD] mr-4 ri-arrow-left-line"
           ></i>
           People
         </h1>
-        <div className="flex items-center w-[80%]">
+
+        {/* Topnav and Dropdown */}
+        <div className="flex items-center w-full sm:w-[80%]">
           <Topnav />
-          <div className="w-[2%]"></div>
+          {/* Category dropdown only for desktop */}
+          <div className="hidden sm:block">
+            <Dropdown
+              title="Category"
+              options={["popular"]}
+              func={(e) => setcategory(e.target.value)}
+            />
+          </div>
         </div>
       </div>
+
+      {/* Infinite Scroll */}
       <InfiniteScroll
         dataLength={person.length}
         next={GetPerson}

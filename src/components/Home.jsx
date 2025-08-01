@@ -13,12 +13,10 @@ function Home() {
   const [trending, settrending] = useState(null);
   const [category, setcategory] = useState("all");
 
-
   const GetHeaderWallpaper = async () => {
     try {
       const { data } = await axios.get(`/trending/all/day`);
-      let randomdata =
-        data.results[(Math.random() * data.results.length).toFixed()];
+      let randomdata = data.results[(Math.random() * data.results.length).toFixed()];
       setwallpaper(randomdata);
     } catch (error) {
       console.log("Error:", error);
@@ -39,29 +37,30 @@ function Home() {
     !wallpaper && GetHeaderWallpaper();
   }, [category]);
 
-
   return wallpaper && trending ? (
-    <>
+    <div className="flex flex-col md:flex-row h-screen w-screen overflow-hidden">
       <Sidenav />
-      <div className="w-[80%] h-full overflow-auto overflow-x-hidden">
+      <div className="w-full md:w-[80%] h-full overflow-auto overflow-x-hidden">
         <Topnav />
         <Header data={wallpaper} />
-        <div className="flex justify-between p-5">
-          <h1 className=" text-3xl mb-3 font-semibold text-zinc-400">
-            Trending{" "}
-          </h1>
 
+        {/* Trending title and filter dropdown */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center px-4 md:px-5 py-4 gap-3 md:gap-0">
+          <h1 className="text-2xl md:text-3xl font-semibold text-zinc-400">
+            Trending
+          </h1>
           <Dropdown
             title="Filter"
             options={["tv", "movie", "all"]}
             func={(e) => setcategory(e.target.value)}
           />
         </div>
+
         <HorizontalCards data={trending} />
       </div>
-    </>
+    </div>
   ) : (
-    <Loading/>
+    <Loading />
   );
 }
 
